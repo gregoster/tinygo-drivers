@@ -1,3 +1,159 @@
+0.25.0
+---
+
+- **core**
+    - add Sensor interface and Measurement type
+    - **delay**
+        - add new package for cycle-accurate delays
+
+- **new devices**
+    - **AS560x**
+        - Add support for ams AS560x on-axis magnetic rotary position sensors
+    - **onewire**
+        - first implementation of 1-wire protocol (#505)
+    - **mpu6886**
+        - initial implementation
+    - **ttp229**
+        - initial support for ttp229 (BSF)
+
+- **enhancements**
+    - **gps**
+        - make the date available in addition to the time (#532)
+    - **i2csoft**
+        - use cycle counting for delays
+    - **ili9341**
+        - add EnableTEOutput to be able to sync drawing with VSYNC
+        - add sleep mode
+        - unify rotation support
+    - **st7735**
+        - add DrawRGBBitmap8 method to draw raw RGB565 buffers
+        - add sleep mode
+        - unify rotation support
+    - **st7789**
+        - added DrawRGBBitmap8 (same as ili9341 & st7735)
+        - allow changing the color format using COLMOD
+        - make it possible to configure gamma
+        - support the chip select pin
+        - update saved rotation in SetRotation
+        - add sleep mode
+        - unify rotation support
+    - **sx126x/sx127x**
+        - Reduce spi buffer size, add missing select when using channels
+        - Remove heap alloc in interrupt, add non blocking channel send/receive, and other cleanups
+    - **wifinina**
+        - add generated strings, improved debugging system and messages
+        - add ResetIsHigh to control the behavior of the RESET pin for boards like the Arduino MKR 1010
+        - only add generated strings when using wifidebug tag
+
+- **bugfixes**
+    - **ds3231**
+        - Document incorrect leap year 2100
+        - Fix negative temperature conversion
+    - **ili9341**
+        - fix Size() for mirrored rotation
+    - **st7789**
+        - avoid heap allocations after the driver is created
+    - **net**
+        - Revert "(#501) make IP.String() method return something sensible"
+    - **wifinina**
+        - small timing adjustments in Configure() to better ensure device reset
+
+- **examples**
+    - **sdcard**
+        - remove tinyfs example and replace with link to tinyfs repo in docs
+    - **wifinina**
+        - improve connectToAP() and other needed minor corrections
+
+- **build**
+    - switch to ghcr.io for docker container
+    - run smoke tests in parallel
+    - **Makefile**
+        - add XTENSA=0 flag to skip Xtensa tests
+        - remove AVR=0 flag
+
+- **docs**
+    - remove full list of devices from README, better to keep it on the tinygo.org site
+    - update LICENSE year
+
+
+0.24.0
+---
+- **new devices**
+    - **lora**
+        - created shared RadioEvent
+        - move shared config for sx126x/sx127x to single package
+    - **lorawan**
+        - add initial LoRaWAN stack support
+        - Basic implementation of Lorawan Regional Settings and EU868/AU915 regions
+    - **qmi8658c**
+        - Add support for the QMI8658C sensor (#467)
+    - **sh1106**
+        - add support for SH1106 display driver
+    - **sx127x**
+        - Driver for Semtech sx127x radio modules
+
+- **enhancements**
+    - **bme280**
+        - improve config support
+        - add ReadAltitude() function copied from BMP280 driver
+    - **buzzer**
+        - make all note durations float64
+        - no tone during rest
+    - **dht22**
+        - update DHT22 receive to use runtime/interrupt
+    - **gps**
+        - add support for GLL sentence type, add original sentence to gps errors
+        - improve error handling
+        - improve parsing and add tests to verify
+    - **microbitmatrix**
+        - add link to schema for microbit V2
+        - add smoke test for microbitmatrix with microbit-v2
+        - add support for brightness of led pixels
+        - harmonize v1 and v2 implementation
+        - move Size() to version agnostic part
+    - **mpu6050**
+        - add functions to configure clock, and scaling for accelerometer and gyroscope
+    - **net/http**
+        - add PostForm()
+    - **sx126x**
+        - add Reset() and needed pin
+        - move RadioController into separate file for clarity
+        - pre-define all errors to avoid heap allocations
+        - refactor to RadioController interface to more easily handle non-STM32WL boards and remove duplicated code
+
+    - **vl53l1x**
+        - Add getter for the effective SPAD count
+    - **wifinina**
+        - add support for http server (#480)
+
+- **bugfixes**
+    - **lsm303agr**
+        - fix I2C address auto increment for multi data read
+    - **net**
+        - (#501) make IP.String() method return something sensible
+    - **mpu6050**
+        - return I2C error when configuring fails
+    - **sx126x**
+        - fix in SetBandwidth function
+        - actually set the frequency when calling SetFrequency()
+        - correct RX/TX pin mapping for TheThingsIndustries GNSE board
+
+- **examples**
+    - **LoRaWAN**
+        - example with LoRaWAN AT command set implementation
+        - basic example
+        - update all remaining examples for refactored API
+    - **sx126x**
+        - fix bandwidth,tx power in lora//lora_continuous example
+    - **sx127x**
+        - rx/tx example
+
+- **build**
+    - remove older format build tags
+    - update to actions/checkout@v3
+    - work around for CVE-2022-24765
+
+
 0.23.0
 ---
 - **new devices**

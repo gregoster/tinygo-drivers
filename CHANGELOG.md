@@ -1,3 +1,138 @@
+0.32.0
+---
+- **enhancements**
+    - **bmp280**
+        - remove alloc on read sensor data
+    - **ws2812**
+        - add 200MHz support for the Cortex-M0/rp2040
+
+- **bugfixes**
+    - **ssd1306**
+        - remove time.Sleep from SSD1306 SPI transfer code
+    - **tmc2209**
+        - tmc2209 bug fixes (#755)
+
+- **docs**
+    - **contributing**
+        - add driver design pointer to CONTRIBUTING.md
+
+
+0.31.0
+---
+---
+- **enhancements**
+    - **spi**
+        - update all SPI usage to use either *machine.SPI or drivers.SPI
+
+
+0.30.0
+---
+- **new devices**
+    - **comboat**
+        - Add wifi driver comboat for Elecrow W5 rp2040 and rp2350 devices (#741)
+    - **max6675**
+        - Add MAX6675 device
+    - **TMC2209**
+        - Added TMC2209 support (#727)
+    - **TMC5160**
+        - Added TMC5160 support (#725)
+    - **sharpmem**
+        - Add sharpmem (#724)
+
+- **enhancements**
+    - **net**
+        - move to latest golang.org/x/net v0.33.0 (#732)
+    - **microphone**
+        - update microphone driver to use latest i2s interface
+
+- **bugfixes**
+    - **net**
+        - fix typo in DHCP error message
+    - **aht20**
+        - Fixed bug in aht20 driver
+    - **hub75**
+        - fix data buffering
+
+
+0.29.0
+---
+- **new devices**
+    - **epd1in54**
+        - Waveshare 1.54inch B/W e-Paper display (#704)
+    - **touch**
+        - add capacitive touch sensing on normal GPIO pins
+    - **INA219**
+        - I2C INA219 driver (#705)
+    - **pcf8591**
+        - add ADC only implementation for I2C ADC/DAC (#690)
+
+- **enhancements**
+    - **pixel**
+        - add NewImageFromBytes() function to allow creating image from existing slice
+    - **servo**
+        - Add function `SetAngleWithMicroseconds` (#695)
+    - **onewire**
+        - onewire improvements
+    - **ssd1306**
+        - Add function `SetFlip` and `GetFlip` (#702)
+    - **uc8151**
+        - add FillRectangle() and SetScroll() functions to satisfy tinyterm.Displayer interface
+    - **ssd1306**
+        - add FillRectangle() and SetScroll() functions to satisfy tinyterm.Displayer interface
+
+- **bugfixes**
+    - **pixel**
+        - fix Monochrome setPixel
+
+- **docs**
+    - **readme**
+        - discuss need to change variables in examples
+    - **sponsor**
+        - Add sponsor button to key repositories
+
+
+0.28.0
+---
+- **new devices**
+    - **epd2in66b**
+        - Waveshare 2.66inch E-Paper Display Module (B) for Raspberry Pi Pico (#673)
+    - **mcp9808**
+        - Add driver for MCP9808 i2c temperature sensor (#676)
+
+- **enhancements**
+    - **encoders**
+        - add atsamd21, atsamd51, atsame5x
+    - **pixel**
+        - add support for Monochrome types such as the SSD1306 display
+    - **rtl8720dn**
+        - implement ConnectModeAP
+    - **servo**
+        - add function SetAngle() to simplify API for most common use case
+    - **ssd1306**
+        - add DrawBitmap() function to complete Displayer interface
+        - add rotation functions for Displayer interface
+        - add Sleep() function for Displayer interface
+    - **uc8151**
+        - improvements to speed and also add flicker-free mode based on @antirez code example
+        - update to support all functions needed by tinygl and board package Displayer interface
+    - **wifinina**
+        - implement ConnectModeAP
+
+- **bugfixes**
+    - **ft6336**
+        - ignore bogus touch events
+    - **pixel**
+        - fix Image[Monochrome].Set for larger images
+    - **uc8151**
+        - correct DrawBitmap() also refactor SendCommand() and SendData() for clarity
+    - **ws2812**
+        - Fix typo and move initialization of neo to init()
+
+- **examples**
+    - **ws2812**
+        - Simplify examples/ws2812
+
+
 0.27.0
 ---
 - **core**

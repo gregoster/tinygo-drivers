@@ -20,9 +20,11 @@ tinygo build -size short -o ./build/test.hex -target=itsybitsy-m0 ./examples/bmi
 tinygo build -size short -o ./build/test.hex -target=itsybitsy-m0 ./examples/bmp180/main.go
 tinygo build -size short -o ./build/test.hex -target=itsybitsy-m0 ./examples/bmp280/main.go
 tinygo build -size short -o ./build/test.hex -target=trinket-m0 ./examples/bmp388/main.go
+tinygo build -size short -o ./build/test.hex -target=metro-rp2350 ./examples/bno08x/i2c/main.go
 tinygo build -size short -o ./build/test.hex -target=bluepill ./examples/ds1307/sram/main.go
 tinygo build -size short -o ./build/test.hex -target=bluepill ./examples/ds1307/time/main.go
-tinygo build -size short -o ./build/test.hex -target=itsybitsy-m0 ./examples/ds3231/main.go
+tinygo build -size short -o ./build/test.hex -target=itsybitsy-m0 ./examples/ds3231/alarms/main.go
+tinygo build -size short -o ./build/test.hex -target=itsybitsy-m0 ./examples/ds3231/basic/main.go
 tinygo build -size short -o ./build/test.hex -target=microbit ./examples/easystepper/main.go
 tinygo build -size short -o ./build/test.hex -target=itsybitsy-m0 ./examples/flash/console/spi
 tinygo build -size short -o ./build/test.hex -target=pyportal ./examples/flash/console/qspi
@@ -144,6 +146,8 @@ tinygo build -size short -o ./build/test.hex -target=pico ./examples/tmc5160/mai
 tinygo build -size short -o ./build/test.uf2 -target=nicenano ./examples/sharpmem/main.go
 tinygo build -size short -o ./build/test.hex -target=feather-nrf52840 ./examples/max6675/main.go
 tinygo build -size short -o ./build/test.hex -target=pico ./examples/ens160/main.go
+tinygo build -size short -o ./build/test.hex -target=pico ./examples/si5351/main.go
+tinygo build -size short -o ./build/test.hex -target=pico ./examples/w5500/main.go
 # network examples (espat)
 tinygo build -size short -o ./build/test.hex -target=challenger-rp2040 ./examples/net/ntpclient/
 # network examples (wifinina)
